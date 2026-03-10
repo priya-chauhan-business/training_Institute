@@ -14,785 +14,12 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
-
-  <style>
-    :root {
-      --bg-dark: #0f1f3a;
-      --bg-dark-2: #15284b;
-      --gold: #d8b56a;
-      --gold-light: #f0d79a;
-      --white: #ffffff;
-      --text-light: #eef2f7;
-      --text-dark: #1f2937;
-      --muted: #cfd7e3;
-      --card-bg: rgba(255, 255, 255, 0.06);
-      --border: rgba(216, 181, 106, 0.35);
-      --shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-      --radius: 18px;
-      --container: 1200px;
-      --soft-bg: #f7f5f0;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: var(--soft-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    ul {
-      padding-left: 1.2rem;
-    }
-
-    .container {
-      width: min(92%, var(--container));
-      margin: 0 auto;
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: rgba(15, 31, 58, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(216, 181, 106, 0.18);
-    }
-
-    .navbar {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      position: relative;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--white);
-    }
-
-    .brand-logo {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.03);
-      padding: 4px;
-    }
-
-    .brand-title {
-      font-family: "Cinzel", serif;
-      font-size: 1.45rem;
-      color: var(--gold-light);
-      font-weight: 700;
-      display: block;
-    }
-
-    .brand-subtitle {
-      display: block;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: var(--white);
-      margin: 5px 0;
-      border-radius: 4px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-link {
-      color: var(--white);
-      font-weight: 600;
-      font-size: 0.96rem;
-      padding: 10px 14px;
-      border-radius: 999px;
-      transition: all 0.25s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-      background: transparent;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--bg-dark);
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 72vh;
-      background:
-        linear-gradient(rgba(12, 24, 46, 0.72), rgba(12, 24, 46, 0.85)),
-        url("assets/hero.jpg") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      color: var(--white);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(216, 181, 106, 0.16), transparent 35%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
-      padding: 80px 0;
-    }
-
-    .eyebrow {
-      color: var(--gold-light);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      font-size: 0.9rem;
-    }
-
-    .hero h1 {
-      font-family: "Cinzel", serif;
-      font-size: clamp(2.3rem, 5vw, 4.5rem);
-      line-height: 1.1;
-      margin-bottom: 18px;
-    }
-
-    .hero-subtext {
-      font-size: 1.07rem;
-      color: var(--text-light);
-      max-width: 700px;
-      margin-bottom: 24px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-weight: 700;
-      border: 2px solid transparent;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--bg-dark);
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border-color: var(--gold);
-      color: var(--white);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(216, 181, 106, 0.12);
-    }
-
-    .hero-card {
-      background: rgba(8, 19, 38, 0.8);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-
-    .hero-card h3 {
-      font-family: "Cinzel", serif;
-      color: var(--gold-light);
-      margin-bottom: 12px;
-      font-size: 1.45rem;
-    }
-
-    .hero-card p {
-      margin-bottom: 8px;
-    }
-
-    .hero-card ul li {
-      margin-bottom: 8px;
-      color: var(--text-light);
-    }
-
-    .tab-wrapper {
-      padding: 70px 0 90px;
-      background: var(--soft-bg);
-    }
-
-    .tab-intro {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .section-tag {
-      display: inline-block;
-      color: #a47b24;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      font-size: 0.86rem;
-    }
-
-    .tab-intro h2,
-    .panel-title,
-    .sub-card h3,
-    .form-card h3,
-    .info-card h3 {
-      font-family: "Cinzel", serif;
-    }
-
-    .tab-intro h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--bg-dark);
-      margin-bottom: 12px;
-    }
-
-    .tab-intro p {
-      color: #5f6774;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .tabs-nav {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 34px;
-    }
-
-    .tab-btn {
-      background: var(--white);
-      border: 1px solid rgba(15, 31, 58, 0.12);
-      color: var(--bg-dark);
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 6px 18px rgba(15, 31, 58, 0.06);
-    }
-
-    .tab-btn:hover,
-    .tab-btn.active {
-      background: var(--bg-dark);
-      color: var(--gold-light);
-      border-color: var(--bg-dark);
-    }
-
-    .tab-panels {
-      position: relative;
-    }
-
-    .tab-panel {
-      display: none;
-      animation: fadeIn 0.28s ease;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .panel-shell {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 20px 50px rgba(15, 31, 58, 0.12);
-      border: 1px solid rgba(15, 31, 58, 0.06);
-    }
-
-    .panel-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      color: var(--bg-dark);
-      margin-bottom: 12px;
-    }
-
-    .panel-subtitle {
-      color: #5f6774;
-      margin-bottom: 28px;
-      max-width: 900px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .sub-card {
-      background: linear-gradient(180deg, #fffefc, #f5efe1);
-      border: 1px solid rgba(216, 181, 106, 0.32);
-      border-radius: 18px;
-      padding: 24px;
-    }
-
-    .sub-card h3 {
-      font-size: 1.35rem;
-      color: var(--bg-dark);
-      margin-bottom: 10px;
-    }
-
-    .sub-card p {
-      color: #47505f;
-    }
-
-    .placeholder-box {
-      min-height: 100%;
-      background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-2));
-      color: var(--gold-light);
-      border-radius: 18px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: 1px solid var(--border);
-    }
-
-    .placeholder-box h3 {
-      font-family: "Cinzel", serif;
-      margin-bottom: 12px;
-      font-size: 1.6rem;
-    }
-
-    .placeholder-box p {
-      color: var(--text-light);
-    }
-
-    .course-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-
-    .course-badge {
-      background: var(--bg-dark);
-      color: var(--gold-light);
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-
-    .course-features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .feature-box {
-      background: linear-gradient(180deg, #fffefc, #f5efe1);
-      border: 1px solid rgba(216, 181, 106, 0.35);
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .feature-box h4 {
-      color: var(--bg-dark);
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-    }
-
-    .feature-box p {
-      color: #8b6d2d;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .feature-box ul li {
-      margin-bottom: 8px;
-    }
-
-    .career-section h4 {
-      margin-bottom: 12px;
-      color: var(--bg-dark);
-      font-size: 1.15rem;
-    }
-
-    .career-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .career-tags span {
-      background: var(--bg-dark);
-      color: var(--white);
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 0.95rem;
-    }
-
-    .faculty-card,
-    .placement-card,
-    .info-card,
-    .form-card {
-      background: var(--white);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 14px 34px rgba(15, 31, 58, 0.1);
-      border: 1px solid rgba(15, 31, 58, 0.06);
-    }
-
-    .faculty-image,
-    .faculty-placeholder {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-
-    .faculty-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-2));
-      color: var(--gold-light);
-      font-family: "Cinzel", serif;
-      font-size: 1.4rem;
-      text-align: center;
-      padding: 18px;
-    }
-
-    .faculty-content,
-    .placement-card,
-    .info-card {
-      padding: 22px;
-    }
-
-    .faculty-content h3,
-    .placement-card h3,
-    .info-card h3 {
-      color: var(--bg-dark);
-      margin-bottom: 8px;
-    }
-
-    .placement-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .placement-card {
-      background: linear-gradient(180deg, #fffefc, #f4efe4);
-      border: 1px solid rgba(216, 181, 106, 0.3);
-    }
-
-    .placement-card .stat {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--bg-dark);
-      margin-bottom: 6px;
-    }
-
-    .admission-layout,
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 26px;
-      align-items: start;
-    }
-
-    .info-card {
-      min-height: 100%;
-      background: linear-gradient(180deg, var(--bg-dark), #122445);
-      color: var(--white);
-      border: 1px solid var(--border);
-    }
-
-    .info-card h3 {
-      color: var(--gold-light);
-      font-family: "Cinzel", serif;
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-    }
-
-    .info-card p {
-      color: var(--text-light);
-      margin-bottom: 16px;
-    }
-
-    .info-card ul li {
-      margin-bottom: 10px;
-      color: var(--text-light);
-    }
-
-    .form-card {
-      padding: 28px;
-    }
-
-    .form-card h3 {
-      color: var(--bg-dark);
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-    }
-
-    .form-card p {
-      color: #5f6774;
-      margin-bottom: 22px;
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: var(--bg-dark);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 12px;
-      border: 1px solid #d4dae3;
-      font-family: inherit;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-      background: #fff;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(216, 181, 106, 0.16);
-    }
-
-    .full-width {
-      width: 100%;
-    }
-
-    .form-message {
-      margin-top: 14px;
-      font-weight: 600;
-      min-height: 24px;
-    }
-
-    .contact-details {
-      display: grid;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .contact-item {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(216, 181, 106, 0.24);
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .contact-item h4 {
-      color: var(--gold-light);
-      margin-bottom: 4px;
-    }
-
-    .footer {
-      background: #091224;
-      color: var(--muted);
-      padding: 26px 0;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer h3 {
-      font-family: "Cinzel", serif;
-      color: var(--gold-light);
-      margin-bottom: 6px;
-      font-size: 1.2rem;
-    }
-
-    @media (max-width: 1100px) {
-      .hero-content,
-      .grid-2,
-      .admission-layout,
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-3,
-      .placement-grid,
-      .course-features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav {
-        position: absolute;
-        top: 82px;
-        right: 0;
-        width: min(320px, 92vw);
-        background: rgba(9, 18, 36, 0.98);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 16px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        box-shadow: var(--shadow);
-      }
-
-      .nav.active {
-        display: flex;
-      }
-
-      .nav-link {
-        width: 100%;
-        text-align: left;
-      }
-
-      .hero {
-        min-height: 66vh;
-      }
-
-      .hero-content {
-        padding: 70px 0;
-      }
-
-      .brand-subtitle {
-        display: none;
-      }
-
-      .tabs-nav,
-      .grid-3,
-      .placement-grid,
-      .course-features {
-        grid-template-columns: 1fr;
-      }
-
-      .panel-shell {
-        padding: 22px;
-      }
-
-      .feature-box,
-      .sub-card,
-      .form-card,
-      .placement-card,
-      .faculty-content {
-        padding: 18px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .tabs-nav {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .tab-btn {
-        width: 100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="header" id="home">
+  <header class="header" id="top">
     <div class="container navbar">
-      <a href="#home" class="brand">
+      <a href="#top" class="brand">
         <img src="assets/logo.png" alt="NexLevel Hospitality Training Institute Logo" class="brand-logo" />
         <div class="brand-text">
           <span class="brand-title">NexLevel</span>
@@ -807,56 +34,98 @@
       </button>
 
       <nav class="nav" id="navMenu">
-  <button class="nav-link active" data-tab-target="homeTab">Home</button>
-  <button class="nav-link" data-tab-target="aboutTab">About Us</button>
-  <button class="nav-link" data-tab-target="coursesTab">Courses</button>
-  <button class="nav-link" data-tab-target="facultyTab">Faculty</button>
-  <button class="nav-link" data-tab-target="admissionsTab">Admissions</button>
-  <button class="nav-link" data-tab-target="placementsTab">Placements</button>
-  <button class="nav-link" data-tab-target="contactTab">Contact Us</button>
-</nav>
+        <button class="nav-link active" data-tab-target="homeTab" type="button">Home</button>
+        <button class="nav-link" data-tab-target="aboutTab" type="button">About Us</button>
+        <button class="nav-link" data-tab-target="coursesTab" type="button">Courses</button>
+        <button class="nav-link" data-tab-target="facultyTab" type="button">Faculty</button>
+        <button class="nav-link" data-tab-target="admissionsTab" type="button">Admissions</button>
+        <button class="nav-link" data-tab-target="placementsTab" type="button">Placements</button>
+        <button class="nav-link" data-tab-target="contactTab" type="button">Contact Us</button>
+      </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-content">
-        <div class="hero-text">
-          <p class="eyebrow">UK-Benchmarked | Gulf-Focused | International Standards</p>
-          <h1>Your Future in Luxury Hospitality Awaits</h1>
-          <p class="hero-subtext">
-            NexLevel Hospitality Training Institute prepares students for global hotel careers
-            through practical skills, confidence building, professional grooming, and real-world industry readiness.
-          </p>
-          <div class="hero-buttons">
-            <button class="btn btn-primary tab-jump" data-tab-target="coursesTab">Explore Courses</button>
-            <button class="btn btn-secondary tab-jump" data-tab-target="admissionsTab">Apply Now</button>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <h3>Admissions Open</h3>
-          <p><strong>Professional Diploma Certification Course</strong></p>
-          <ul>
-            <li>Duration: 16 Weeks / 4 Months</li>
-            <li>Luxury hospitality career preparation</li>
-            <li>Interview coaching and placement support</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <section class="tab-wrapper">
       <div class="container">
         <div class="tab-intro">
           <span class="section-tag">NexLevel Hospitality Training Institute</span>
           <h2>Explore Our Institute</h2>
-      
-      </div>
+        </div>
 
         <div class="tab-panels">
+          <!-- HOME -->
+          <section class="tab-panel active" id="homeTab">
+            <div class="home-slider" id="homeSlider">
+              <div class="home-slide active" data-home-slide="0">
+                <div class="hero home-hero home-hero-slide-1">
+                  <div class="container hero-content">
+                    <div class="hero-text">
+                      <p class="eyebrow">UK Benchmarked | Gulf Focused | International Standards</p>
+                      <h1>Your Future in Luxury Hospitality Awaits</h1>
+                      <p class="hero-subtext">
+                        NexLevel Hospitality Training Institute prepares students for global hotel careers
+                        through practical skills, confidence building, professional grooming, and real-world
+                        industry readiness.
+                      </p>
+                      <div class="hero-buttons">
+                        <button class="btn btn-primary tab-jump" data-tab-target="coursesTab" type="button">Explore Courses</button>
+                        <button class="btn btn-secondary home-next-slide" type="button">Next</button>
+                      </div>
+                    </div>
+
+                    <div class="hero-visual-card">
+                      <div class="home-visual-grid">
+                        <div class="home-visual-image">
+                          <img src="assets/hero.jpg" alt="Luxury international gulf hotel interior" />
+                        </div>
+                        <div class="home-visual-image">
+                          <img src="assets/about.jpg" alt="Luxury hospitality lobby and interiors" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="home-slide" data-home-slide="1">
+                <div class="hero home-hero home-hero-slide-2">
+                  <div class="container hero-content">
+                    <div class="hero-text">
+                      <p class="eyebrow">Admissions 2026</p>
+                      <h1>Admissions Open</h1>
+                      <p class="hero-subtext">
+                        Join our Professional Diploma Certification Course and begin your path toward a
+                        global career in luxury hospitality.
+                      </p>
+                      <div class="hero-buttons">
+                        <button class="btn btn-primary tab-jump" data-tab-target="admissionsTab" type="button">Apply Now</button>
+                        <button class="btn btn-secondary home-prev-slide" type="button">Previous</button>
+                      </div>
+                    </div>
+
+                    <div class="hero-card">
+                      <h3>Professional Diploma Certification Course</h3>
+                      <p><strong>Duration:</strong> 16 Weeks / 4 Months</p>
+                      <ul>
+                        <li>Luxury hospitality career preparation</li>
+                        <li>Interview coaching and placement support</li>
+                        <li>Industry-focused practical training</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="home-slider-controls">
+                <button class="slider-dot active" type="button" data-home-target="0" aria-label="Go to home slide 1"></button>
+                <button class="slider-dot" type="button" data-home-target="1" aria-label="Go to home slide 2"></button>
+              </div>
+            </div>
+          </section>
+
           <!-- ABOUT -->
-          <section class="tab-panel active" id="aboutTab">
+          <section class="tab-panel" id="aboutTab">
             <div class="panel-shell">
               <h2 class="panel-title">About Us</h2>
               <p class="panel-subtitle">
@@ -864,31 +133,31 @@
                 hospitality professionals through global standards, practical excellence, and career-focused training.
               </p>
 
-              <div class="grid-3">
-                <article class="sub-card">
+              <div class="about-lines">
+                <div class="about-line-item">
                   <h3>Our Mission</h3>
                   <p>
-                    To empower aspiring hospitality professionals with world-class training,
-                    practical industry knowledge, communication excellence, and the confidence
-                    required to thrive in luxury hospitality environments.
+                    To empower aspiring hospitality professionals with world-class training, practical
+                    industry knowledge, communication excellence, and the confidence required to thrive
+                    in luxury hospitality environments.
                   </p>
-                </article>
+                </div>
 
-                <article class="sub-card">
+                <div class="about-line-item">
                   <h3>Our Value</h3>
                   <p>
                     We believe in discipline, service excellence, integrity, cultural awareness,
-                    professionalism, and continuous growth. These values guide our teaching
-                    methods and shape every learner’s journey.
+                    professionalism, and continuous growth. These values guide our teaching methods and
+                    shape every learner’s journey.
                   </p>
-                </article>
+                </div>
 
-                <article class="sub-card">
+                <div class="about-line-item">
                   <h3>Our Directors</h3>
                   <p>
-                    details will be added here later
+                    Details will be added here later.
                   </p>
-                </article>
+                </div>
               </div>
             </div>
           </section>
@@ -1196,116 +465,31 @@
         <h3>NexLevel Hospitality Training Institute</h3>
         <p>Your Global Career Starts Here.</p>
       </div>
-      <p>&copy; 2026 NexLevel Hospitality Training Institute. All rights reserved.</p>
+
+      <div class="footer-right">
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H16.8V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V11H7.8v3h2.6v8h3.1z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm10.5 1.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 3c.4 1.8 1.4 3.2 3 4.1 1 .6 2 .9 3 .9v3c-1.5 0-3-.4-4.3-1.2v6.1a5.9 5.9 0 1 1-5.9-5.9c.3 0 .6 0 .9.1v3.1a2.7 2.7 0 1 0 2 2.7V3h1.3z"/>
+            </svg>
+          </a>
+        </div>
+
+        <p>&copy; 2026 NexLevel Hospitality Training Institute. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const tabButtons = document.querySelectorAll(".tab-btn");
-    const tabJumpButtons = document.querySelectorAll(".tab-jump");
-    const tabPanels = document.querySelectorAll(".tab-panel");
-
-    function activateTab(tabId) {
-      tabPanels.forEach((panel) => {
-        panel.classList.toggle("active", panel.id === tabId);
-      });
-
-      tabButtons.forEach((button) => {
-        button.classList.toggle("active", button.dataset.tabTarget === tabId);
-      });
-
-      navLinks.forEach((link) => {
-        link.classList.toggle("active", link.dataset.tabTarget === tabId);
-      });
-
-      const tabWrapper = document.querySelector(".tab-wrapper");
-      if (tabWrapper) {
-        tabWrapper.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-
-      navMenu.classList.remove("active");
-    }
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        activateTab(link.dataset.tabTarget);
-      });
-    });
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        activateTab(button.dataset.tabTarget);
-      });
-    });
-
-    tabJumpButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        activateTab(button.dataset.tabTarget);
-      });
-    });
-
-    if (menuToggle) {
-      menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-      });
-    }
-
-    function validateEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    function setupForm(formId, messageId, successText) {
-      const form = document.getElementById(formId);
-      const messageBox = document.getElementById(messageId);
-
-      if (!form || !messageBox) return;
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const inputs = form.querySelectorAll("input[required], textarea[required], select[required]");
-        let isValid = true;
-
-        inputs.forEach((input) => {
-          if (!input.value.trim()) {
-            isValid = false;
-          }
-        });
-
-        const emailInput = form.querySelector('input[type="email"]');
-        if (emailInput && !validateEmail(emailInput.value.trim())) {
-          isValid = false;
-          messageBox.textContent = "Please enter a valid email address.";
-          messageBox.style.color = "#b91c1c";
-          return;
-        }
-
-        if (!isValid) {
-          messageBox.textContent = "Please fill in all required fields.";
-          messageBox.style.color = "#b91c1c";
-          return;
-        }
-
-        messageBox.textContent = successText;
-        messageBox.style.color = "#166534";
-        form.reset();
-      });
-    }
-
-    setupForm(
-      "admissionsForm",
-      "admissionsFormMessage",
-      "Thank you! Your admissions enquiry has been submitted successfully."
-    );
-
-    setupForm(
-      "contactForm",
-      "contactFormMessage",
-      "Thank you! Your message has been sent successfully."
-    );
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
