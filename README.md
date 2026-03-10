@@ -8,6 +8,7 @@ A responsive static website for NexLevel Hospitality Training Institute built us
 - Luxury hospitality inspired design
 - Responsive layout for desktop, tablet, and mobile
 - Sections included:
+  - Home
   - About Us
   - Our Mission
   - Our Vision
