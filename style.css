@@ -904,3 +904,34 @@ ul {
     height: 180px;
   }
 }
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.btn:hover::after {
+  width: 100%;
+}
+.tab-panel {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.35s ease;
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
