@@ -148,3 +148,8 @@ setupForm(
   "contactFormMessage",
   "Thank you! Your message has been sent successfully."
 );
+/* AUTO HOME SLIDER */
+
+let autoSlideInterval = setInterval(() => {
+  showHomeSlide(currentHomeSlide + 1);
+}, 6000); // changes every 10 seconds
