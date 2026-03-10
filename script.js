@@ -48,8 +48,11 @@ const homeSlides = document.querySelectorAll(".home-slide");
 const sliderDots = document.querySelectorAll(".slider-dot");
 const nextSlideButton = document.querySelector(".home-next-slide");
 const prevSlideButton = document.querySelector(".home-prev-slide");
+const sliderNextArrow = document.getElementById("sliderNext");
+const sliderPrevArrow = document.getElementById("sliderPrev");
 
 let currentHomeSlide = 0;
+let autoSlideInterval = null;
 
 function showHomeSlide(index) {
   if (!homeSlides.length) return;
@@ -71,15 +74,44 @@ function showHomeSlide(index) {
   });
 }
 
+function startAutoSlide() {
+  stopAutoSlide();
+  autoSlideInterval = setInterval(() => {
+    showHomeSlide(currentHomeSlide + 1);
+  }, 6000);
+}
+
+function stopAutoSlide() {
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval);
+  }
+}
+
 if (nextSlideButton) {
   nextSlideButton.addEventListener("click", () => {
     showHomeSlide(currentHomeSlide + 1);
+    startAutoSlide();
   });
 }
 
 if (prevSlideButton) {
   prevSlideButton.addEventListener("click", () => {
     showHomeSlide(currentHomeSlide - 1);
+    startAutoSlide();
+  });
+}
+
+if (sliderNextArrow) {
+  sliderNextArrow.addEventListener("click", () => {
+    showHomeSlide(currentHomeSlide + 1);
+    startAutoSlide();
+  });
+}
+
+if (sliderPrevArrow) {
+  sliderPrevArrow.addEventListener("click", () => {
+    showHomeSlide(currentHomeSlide - 1);
+    startAutoSlide();
   });
 }
 
@@ -87,10 +119,12 @@ sliderDots.forEach((dot) => {
   dot.addEventListener("click", () => {
     const targetIndex = Number(dot.dataset.homeTarget);
     showHomeSlide(targetIndex);
+    startAutoSlide();
   });
 });
 
 showHomeSlide(0);
+startAutoSlide();
 
 /* FORM VALIDATION */
 function validateEmail(email) {
@@ -119,6 +153,7 @@ function setupForm(formId, messageId, successMessage) {
     });
 
     const emailField = form.querySelector('input[type="email"]');
+
     if (emailField && !validateEmail(emailField.value.trim())) {
       messageBox.textContent = "Please enter a valid email address.";
       messageBox.style.color = "#b91c1c";
@@ -148,8 +183,3 @@ setupForm(
   "contactFormMessage",
   "Thank you! Your message has been sent successfully."
 );
-/* AUTO HOME SLIDER */
-
-let autoSlideInterval = setInterval(() => {
-  showHomeSlide(currentHomeSlide + 1);
-}, 6000); // changes every 10 seconds
