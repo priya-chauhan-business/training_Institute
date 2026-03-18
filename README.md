@@ -1,7 +1,7 @@
 
-# NexLevel Hospitality Training Institute Website
+# Hospera Hospitality Training Institute Website
 
-A responsive static website for NexLevel Hospitality Training Institute built using HTML, CSS, and JavaScript.
+A responsive static website for Hospera Hospitality Training Institute built using HTML, CSS, and JavaScript.
 
 ## Features
 
@@ -22,7 +22,7 @@ A responsive static website for NexLevel Hospitality Training Institute built us
 ## Project Structure
 
 ```bash
-nexlevel-hospitality-website/
+Hospera-hospitality-website/
 ├── index.html
 ├── style.css
 ├── script.js
